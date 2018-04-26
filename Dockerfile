@@ -9,6 +9,11 @@ USER ubuntu
 RUN mkdir -p /home/ubuntu/.ssh && \
     chmod 0700 /home/ubuntu/.ssh && \
     ssh-keyscan github.com > /home/ubuntu/.ssh/known_hosts
+# Add the keys and set permissions
+RUN echo "$ssh_prv_key" > ~/.ssh/id_rsa && \
+    echo "$ssh_pub_key" > ~/.ssh/id_rsa.pub && \
+    chmod 600 ~/.ssh/id_rsa && \
+    chmod 600 ~/.ssh/id_rsa.pub
 #RUN mad
 #RUN ssh
 ##TODO set permission keys
