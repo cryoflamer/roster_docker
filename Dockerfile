@@ -10,7 +10,7 @@ ENV HOME /home/ubuntu
 RUN mkdir -p /home/ubuntu/.ssh && \
     chmod 0700 /home/ubuntu/.ssh && \
     ssh-keyscan github.com > /home/ubuntu/.ssh/known_hosts
-    
+
 # Add the keys and set permissions
 RUN echo "$ssh_prv_key" > ~/.ssh/id_rsa && \
     echo "$ssh_pub_key" > ~/.ssh/id_rsa.pub && \
@@ -22,5 +22,5 @@ RUN git clone git@github.com:NYNJA-MC/server.git
 WORKDIR $HOME/server
 RUN mad dep com pla
 
-#TODO run sevice from
+#TODO run sevice from command line
 #CMD make start
